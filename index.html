@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <title>разом — наш простір</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Разом, головна"><span class="brand-mark">r.</span><span>разом</span></a>
+      <div class="connection"><span id="connectionDot" class="dot"></span><span id="connectionText">Підключаємося…</span></div>
+    </header>
+
+    <main>
+      <section id="welcome" class="welcome panel">
+        <div class="eyebrow"><span class="tiny-heart">♥</span> ВАШ МАЛЕНЬКИЙ ПРОСТІР</div>
+        <h1>Навіть на відстані<br><span>ми поруч.</span></h1>
+        <p class="intro">Місце для маленьких малюнків і всього, що хочеться залишити одне одному.</p>
+        <div class="room-actions">
+          <button id="createRoom" class="btn btn-dark">Створити наш простір <span>↗</span></button>
+          <form id="joinForm" class="join-form">
+            <label for="roomInput">Вже маєте код кімнати?</label>
+            <div class="join-row"><input id="roomInput" placeholder="Введіть код" autocomplete="off" maxlength="40"><button class="btn btn-light" type="submit">Приєднатися</button></div>
+          </form>
+        </div>
+        <div class="privacy-note"><span>✳</span> Діліться посиланням лише з людиною, яку запрошуєте.</div>
+      </section>
+
+      <section id="workspace" class="workspace hidden">
+        <div class="welcome-line">
+          <div><div class="eyebrow">ВАШ СПІЛЬНИЙ ПРОСТІР</div><h1 class="workspace-title">Що намалюємо <span>одне одному?</span></h1></div>
+          <button id="copyInvite" class="btn btn-light invite-btn">↗ <span>Запросити</span></button>
+        </div>
+
+        <section id="drawPanel" class="content-panel">
+          <div class="panel-heading"><div><h2>Одне полотно — дві людини</h2><p>Малюйте разом. Зміни з’являтимуться в обох майже миттєво.</p></div><span class="live-pill"><span class="dot"></span> LIVE</span></div>
+          <div class="toolbar">
+            <div class="tool-group">
+              <button class="tool active" data-tool="pen" title="Пензель" aria-label="Пензель">✎</button>
+              <button class="tool" data-tool="eraser" title="Гумка" aria-label="Гумка">⌫</button>
+            </div>
+            <div class="palette" aria-label="Колір пензля">
+              <button class="swatch selected" data-color="#292927" style="--swatch:#292927" aria-label="Темний"></button>
+              <button class="swatch" data-color="#e46d69" style="--swatch:#e46d69" aria-label="Кораловий"></button>
+              <button class="swatch" data-color="#8b91d9" style="--swatch:#8b91d9" aria-label="Лавандовий"></button>
+              <button class="swatch" data-color="#7aab8b" style="--swatch:#7aab8b" aria-label="Зелений"></button>
+              <button class="swatch" data-color="#e6b75d" style="--swatch:#e6b75d" aria-label="Жовтий"></button>
+            </div>
+            <label class="size-control" for="brushSize">Розмір <input id="brushSize" type="range" min="2" max="18" value="5"><span id="sizeValue">5</span></label>
+            <div class="toolbar-spacer"></div>
+            <button id="undoBtn" class="text-btn" title="Скасувати останній штрих">↶ <span>Назад</span></button>
+            <button id="clearBtn" class="text-btn danger">Очистити</button>
+          </div>
+          <div class="canvas-wrap"><canvas id="drawingCanvas" aria-label="Спільне полотно для малювання"></canvas><div id="canvasHint" class="canvas-hint">Почни з маленького сердечка ♥</div></div>
+          <div class="canvas-footer"><span><span class="dot"></span> Синхронізація ввімкнена</span><button id="saveDrawing" class="btn btn-dark btn-small">Зберегти малюнок ↓</button></div>
+        </section>
+        <footer class="workspace-footer"><span>Зроблено з теплом <span class="tiny-heart">♥</span></span><span id="roomLabel"></span></footer>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <dialog id="clearDialog" class="dialog">
+    <div class="dialog-icon">✳</div><h2>Очистити полотно?</h2><p>Це прибере всі штрихи для вас обох.</p>
+    <div class="dialog-actions"><button id="cancelClear" class="btn btn-light">Не зараз</button><button id="confirmClear" class="btn btn-dark">Очистити</button></div>
+  </dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
